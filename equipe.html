@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Équipe - SRS Notaires</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1B4D89;
+            --secondary-color: #F4C430;
+            --accent-color: #0D3B66;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        header {
+            background: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background: var(--primary-color);
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: flex-start;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center; text-align: center;
+        }
+
+        .logo { margin-bottom: 1.5rem; } .logo img {
+            height: 70px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hero {
+            margin-top: 120px;
+            background: linear-gradient(rgba(27, 77, 137, 0.88), rgba(13, 59, 102, 0.88)), 
+                        url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80') center/cover;
+            background-attachment: fixed;
+            color: var(--text-light);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--secondary-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            background: #FFD700;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .services {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+            border-left-color: var(--primary-color);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .service-card .service-subtitle {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .service-card .service-description {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .about {
+            background: var(--bg-light);
+            padding: 5rem 2rem;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .values {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: scale(1.05);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .value-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 5rem 2rem;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background: var(--accent-color);
+            color: #ffffff;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            line-height: 1.7;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 0.8rem;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .footer-contact i {
+            color: var(--secondary-color);
+            margin-right: 0.5rem;
+            width: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 968px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .hero {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: -100%;
+                flex-direction: column;
+                background: var(--bg-white);
+                width: 100%;
+                padding: 2rem;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transition: 0.3s;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            nav {
+                position: relative;
+            }
+
+            .hero {
+                margin-top: 140px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .logo { margin-bottom: 1.5rem; } .logo img {
+                height: 50px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 2rem;
+            }
+
+            .header-top {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        /* ============================================= */
+        /* RESPONSIVE DESIGN OPTIMISÉ */
+        /* ============================================= */
+
+        /* Tablettes (768px - 968px) */
+        @media (max-width: 968px) {
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .hero {
+                background-attachment: scroll;
+                padding: 4rem 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        /* Mobile et petites tablettes (max 768px) */
+        @media (max-width: 768px) {
+            .header-top {
+                padding: 0.5rem 1rem;
+            }
+            
+            .social-links {
+                gap: 0.5rem;
+            }
+            
+            .social-links a {
+                font-size: 1rem;
+            }
+            
+            nav {
+                padding: 1rem;
+                position: relative;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+            }
+            
+            .logo img {
+                height: 50px;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                right: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                flex-direction: column;
+                cursor: pointer;
+                z-index: 100;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: #fff;
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+                gap: 1rem;
+                align-items: flex-start;
+                overflow-y: auto;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links a {
+                width: 100%;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .hero {
+                margin-top: 120px;
+                padding: 3rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+                line-height: 1.3;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 0.95rem;
+            }
+            
+            .services,
+            .content {
+                padding: 3rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+            
+            .services-grid,
+            .team-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .service-card,
+            .team-member {
+                padding: 1.5rem;
+            }
+            
+            .service-icon,
+            .value-icon {
+                font-size: 2.5rem;
+            }
+            
+            .about,
+            .values,
+            .contact {
+                padding: 3rem 1rem;
+            }
+            
+            .about-content p {
+                font-size: 1rem;
+            }
+            
+            .contact-info,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+            
+            .footer-logo img {
+                height: 50px;
+            }
+            
+            /* Mobile menu overlay */
+            .nav-links.active::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.5);
+                z-index: -1;
+            }
+        }
+
+        /* Très petits écrans (max 480px) */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .service-card h3,
+            .value-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .cta-button {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Menu déroulant Services */
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 280px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            border-radius: 10px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            margin-top: 0.5rem;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.8rem 1.5rem;
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: none;
+            letter-spacing: normal;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-menu a:hover {
+            background: #f8f9fa;
+            color: #1B4D89;
+            border-left-color: #F4C430;
+            padding-left: 1.8rem;
+        }
+
+        .dropdown-menu a i {
+            margin-right: 0.8rem;
+            color: #1B4D89;
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-item > a.has-dropdown::after {
+            content: "";
+            display: inline-block;
+            margin-left: 0.5rem;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid currentColor;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: #f8f9fa;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+                border-radius: 5px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                padding: 0;
+            }
+
+            .nav-item.mobile-open .dropdown-menu {
+                max-height: 500px;
+                padding: 0.5rem 0;
+            }
+
+            .nav-item > a.has-dropdown {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .dropdown-menu a {
+                padding: 0.6rem 1rem 0.6rem 2rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo-srs-notaires.png" alt="SRS Notaires">
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="equipe.html" class="active">NOTRE ÉQUIPE</a></li>
+                <li class="nav-item">
+                    <a href="services.html" class="has-dropdown" onclick="toggleDropdown(event)">NOS SERVICES</a>
+                    <div class="dropdown-menu">
+                        <a href="services.html#service-1"><i class="fas fa-home"></i> Transactions immobilières</a>
+                        <a href="services.html#service-2"><i class="fas fa-file-signature"></i> Testaments et successions</a>
+                        <a href="services.html#service-3"><i class="fas fa-heart"></i> Droit familial</a>
+                        <a href="services.html#service-4"><i class="fas fa-building"></i> Droit corporatif</a>
+                        <a href="services.html#service-5"><i class="fas fa-shield-alt"></i> Protection du patrimoine</a>
+                        <a href="services.html#service-6"><i class="fas fa-balance-scale"></i> Conseils juridiques</a>
+                        <a href="services.html#service-7"><i class="fas fa-plane-departure"></i> Immigration</a>
+                    </div>
+                </li>
+                <li><a href="carrieres.html">CARRIÈRES</a></li>
+                <li><a href="contact.html">NOUS JOINDRE</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Notre Équipe</h1>
+        <p>Rencontrez notre notaire dévouée, prête à vous offrir un service juridique de la plus haute qualité.</p>
+    </section>
+
+    <section class="content" style="max-width: 1200px; margin: 0 auto; padding: 5rem 2rem;">
+        
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; margin-bottom: 5rem;">
+            <div style="text-align: center;">
+                <div style="background: linear-gradient(135deg, #1B4D89, #0D3B66); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.2); margin-bottom: 2rem;">
+                    <div style="height: 400px; display: flex; align-items: center; text-align: center; justify-content: center; color: #F4C430; font-size: 8rem;">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <h2 style="color: #1B4D89; font-size: 2rem; margin-bottom: 0.5rem; font-weight: 700;">Me Sawadogo Sarah</h2>
+                <p style="color: #F4C430; font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Notaire, Fondatrice</p>
+            </div>
+
+            <div style="background: #fff; padding: 3rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-left: 5px solid #F4C430;">
+                <h3 style="color: #1B4D89; font-size: 1.8rem; margin-bottom: 2rem; font-weight: 700;">Parcours et Expertise</h3>
+                
+                <p style="color: #555; line-height: 2; font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    Me Sawadogo Sarah est diplômée d'une <strong>Maîtrise en Droit des Affaires en France</strong> et d'une <strong>Maîtrise en Droit Notarial de l'Université d'Ottawa</strong>. Admise à la Chambre des Notaires du Québec en 2023, elle a acquis une expérience significative avant de décider de fonder son propre cabinet.
+                </p>
+
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 10px; margin: 2rem 0; border-left: 4px solid #1B4D89;">
+                    <h4 style="color: #1B4D89; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 700;">
+                        <i class="fas fa-bullseye" style="color: #F4C430; margin-right: 0.5rem;"></i>
+                        Sa Mission
+                    </h4>
+                    <p style="color: #555; line-height: 1.9; font-size: 1.05rem;">
+                        Offrir une expertise juridique rigoureuse tout en restant proche de sa clientèle. Soucieuse de répondre aux besoins spécifiques de chaque client, elle privilégie une approche humaine et personnalisée, garantissant une relation de confiance et un accompagnement sur mesure.
+                    </p>
+                </div>
+
+                <p style="color: #555; line-height: 2; font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    Attentive et proactive, Me Sawadogo Sarah s'adapte aux différentes situations afin de sécuriser vos documents légaux et assurer la bonne réalisation de vos projets.
+                </p>
+
+                <div style="background: linear-gradient(135deg, #1B4D89, #0D3B66); padding: 2rem; border-radius: 10px; margin-top: 2rem;">
+                    <h4 style="color: #F4C430; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 700;">
+                        <i class="fas fa-star" style="margin-right: 0.5rem;"></i>
+                        Son Engagement
+                    </h4>
+                    <p style="color: #fff; line-height: 1.9; font-size: 1.05rem;">
+                        Vous offrir un service de qualité, où la rigueur juridique se conjugue avec bienveillance et disponibilité.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 4rem 2rem; border-radius: 15px; text-align: center;">
+            <h2 style="color: #1B4D89; font-size: 2rem; margin-bottom: 3rem; font-weight: 700;">Pourquoi choisir SRS Notaires?</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; max-width: 1000px; margin: 0 auto;">
+                <div style="padding: 2rem; background: #fff; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                    <div style="font-size: 3.5rem; color: #F4C430; margin-bottom: 1rem;"><i class="fas fa-user-graduate"></i></div>
+                    <h3 style="color: #1B4D89; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 700;">Double Formation</h3>
+                    <p style="color: #666; line-height: 1.7;">Maîtrise en Droit des Affaires (France) et Droit Notarial (Ottawa)</p>
+                </div>
+                <div style="padding: 2rem; background: #fff; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                    <div style="font-size: 3.5rem; color: #F4C430; margin-bottom: 1rem;"><i class="fas fa-certificate"></i></div>
+                    <h3 style="color: #1B4D89; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 700;">Membre CNQ</h3>
+                    <p style="color: #666; line-height: 1.7;">Admise à la Chambre des Notaires du Québec depuis 2023</p>
+                </div>
+                <div style="padding: 2rem; background: #fff; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                    <div style="font-size: 3.5rem; color: #F4C430; margin-bottom: 1rem;"><i class="fas fa-heart"></i></div>
+                    <h3 style="color: #1B4D89; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 700;">Approche Humaine</h3>
+                    <p style="color: #666; line-height: 1.7;">Service personnalisé avec écoute et bienveillance</p>
+                </div>
+                <div style="padding: 2rem; background: #fff; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                    <div style="font-size: 3.5rem; color: #F4C430; margin-bottom: 1rem;"><i class="fas fa-shield-check"></i></div>
+                    <h3 style="color: #1B4D89; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 700;">Rigueur Juridique</h3>
+                    <p style="color: #666; line-height: 1.7;">Expertise et sécurisation de tous vos documents légaux</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem; padding: 3rem; background: linear-gradient(135deg, #1B4D89, #0D3B66); border-radius: 15px;">
+            <h3 style="color: #F4C430; font-size: 2rem; margin-bottom: 1rem; font-weight: 700;">Prêt à commencer?</h3>
+            <p style="color: #fff; font-size: 1.2rem; margin-bottom: 2rem;">Contactez-nous dès aujourd'hui pour discuter de vos besoins juridiques</p>
+            <a href="contact.html" style="display: inline-block; padding: 1rem 3rem; background: #F4C430; color: #0D3B66; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                Prendre rendez-vous <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+            </a>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="logo-srs-notaires.png" alt="SRS Notaires">
+                </div>
+                <p class="footer-description">
+                    Cabinet de notaires professionnel offrant des services juridiques de qualité à Laval. Nous vous accompagnons dans tous vos projets de vie avec expertise et dévouement.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Nos Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html">Transactions immobilières</a></li>
+                    <li><a href="services.html">Testaments et successions</a></li>
+                    <li><a href="services.html">Droit familial</a></li>
+                    <li><a href="services.html">Droit corporatif</a></li>
+                    <li><a href="services.html">Protection du patrimoine</a></li>
+                    <li><a href="services.html">Conseils juridiques</a></li>
+                    <li><a href="services.html">Immigration</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Liens Utiles</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="equipe.html">Notre Équipe</a></li>
+                    <li><a href="services.html">Nos Services</a></li>
+                    <li><a href="carrieres.html">Carrières</a></li>
+                    <li><a href="contact.html">Nous Joindre</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-contact">
+                <h3>Coordonnées</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 1878 boulevard des Laurentides<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Laval, QC H7M 2P9</p>
+                <p><i class="fas fa-phone"></i> (450) 662-2112</p>
+                <p><i class="fas fa-fax"></i> (514) 565-9802</p>
+                <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3daddd5dcf3c0c1c09edddcc7d2dac1d69dd0dcde">[email&#160;protected]</a></p>
+                <p><i class="fas fa-clock"></i> Lun-Ven: 9h00 - 17h00</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 SRS Notaires - Tous droits réservés. | Services notariaux professionnels à Laval, Québec</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">        // Menu déroulant mobile
+        function toggleDropdown(event) {
+            if (window.innerWidth <= 768) {
+                event.preventDefault();
+                const navItem = event.target.closest(".nav-item");
+                navItem.classList.toggle("mobile-open");
+            }
+        }
+
+        // Fermer le dropdown en cliquant en dehors
+        document.addEventListener("click", function(e) {
+            if (!e.target.closest(".nav-item")) {
+                document.querySelectorAll(".nav-item").forEach(item => {
+                    item.classList.remove("mobile-open");
+                });
+            }
+        });
+    </script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        cons
