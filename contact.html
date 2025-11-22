@@ -4,787 +4,196 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nous Joindre - SRS Notaires</title>
+    <meta name="description" content="Contactez SRS Notaires à Laval. Téléphone, courriel, formulaire de contact et carte pour nous trouver facilement.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #1B4D89;
-            --secondary-color: #F4C430;
-            --accent-color: #0D3B66;
-            --text-dark: #2c3e50;
-            --text-light: #ffffff;
-            --bg-light: #f8f9fa;
-            --bg-white: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-        }
-
-        header {
-            background: var(--bg-white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-top {
-            background: var(--primary-color);
-            padding: 0.5rem 2rem;
-            display: flex;
-            justify-content: flex-start;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            color: var(--text-light);
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center; text-align: center;
-        }
-
-        .logo { margin-bottom: 1.5rem; } .logo img {
-            height: 70px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 28px;
-            height: 3px;
-            background: var(--primary-color);
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .hero {
-            margin-top: 120px;
-            background: linear-gradient(rgba(27, 77, 137, 0.88), rgba(13, 59, 102, 0.88)), 
-                        url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80') center/cover;
-            background-attachment: fixed;
-            color: var(--text-light);
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            line-height: 1.8;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--secondary-color);
-            color: var(--accent-color);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .cta-button:hover {
-            background: #FFD700;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        .services {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 3rem;
-            font-weight: 700;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .service-card {
-            background: var(--bg-white);
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            border-left: 5px solid var(--secondary-color);
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
-            border-left-color: var(--primary-color);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .service-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.6rem;
-            font-weight: 700;
-        }
-
-        .service-card .service-subtitle {
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-            line-height: 1.5;
-        }
-
-        .service-card .service-description {
-            color: #555;
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
-        .about {
-            background: var(--bg-light);
-            padding: 5rem 2rem;
-        }
-
-        .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-content h2 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .about-content p {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .values {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .value-card {
-            text-align: center;
-            padding: 2rem;
-            transition: transform 0.3s;
-        }
-
-        .value-card:hover {
-            transform: scale(1.05);
-        }
-
-        .value-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-        }
-
-        .value-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .contact {
-            background: var(--primary-color);
-            color: var(--text-light);
-            padding: 5rem 2rem;
-        }
-
         .contact-content {
             max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
+            padding: 4rem 2rem;
         }
 
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-info {
+        .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
-        .contact-item {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
+        .contact-info-section h2 {
+            color: #1B4D89;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .info-card {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
             border-radius: 10px;
+            border-left: 4px solid #F4C430;
             transition: all 0.3s;
         }
 
-        .contact-item:hover {
-            background: rgba(255,255,255,0.15);
+        .info-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .contact-item h3 {
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-        }
-
-        footer {
-            background: var(--accent-color);
-            color: #ffffff;
-            padding: 3rem 2rem 1.5rem;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
+        .info-card h3 {
+            color: #1B4D89;
+            margin-bottom: 0.5rem;
             font-size: 1.2rem;
-            font-weight: 700;
         }
 
-        .footer-logo {
-            margin-bottom: 1rem;
-        }
-
-        .footer-logo img {
-            height: 60px;
-            width: auto;
-            margin-bottom: 1rem;
-        }
-
-        .footer-description {
-            line-height: 1.7;
-            color: rgba(255,255,255,0.85);
-            font-size: 0.95rem;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        .footer-contact p {
-            margin-bottom: 0.8rem;
-            color: rgba(255,255,255,0.85);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .footer-contact i {
-            color: var(--secondary-color);
+        .info-card i {
+            color: #F4C430;
             margin-right: 0.5rem;
-            width: 20px;
         }
 
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 1.5rem;
+        .info-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .info-card a {
+            color: #1B4D89;
+            text-decoration: none;
+        }
+
+        .info-card a:hover {
+            color: #F4C430;
+        }
+
+        .contact-form-section {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-form-section h2 {
+            color: #1B4D89;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #0D3B66;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #F4C430;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: #F4C430;
+            color: #0D3B66;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #FFD700;
+            transform: translateY(-2px);
+        }
+
+        .map-section {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .map-container h2 {
             text-align: center;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
+            font-size: 2rem;
+            color: #1B4D89;
+            margin-bottom: 1rem;
+        }
+
+        .map-container p {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
         }
 
         @media (max-width: 968px) {
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 968px) {
-            .nav-links {
-                gap: 1.5rem;
-                font-size: 0.9rem;
-            }
-            
-            .hero {
-                background-attachment: scroll;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: -100%;
-                flex-direction: column;
-                background: var(--bg-white);
-                width: 100%;
-                padding: 2rem;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-                transition: 0.3s;
-                gap: 1rem;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            nav {
-                position: relative;
-            }
-
-            .hero {
-                margin-top: 140px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .logo { margin-bottom: 1.5rem; } .logo img {
-                height: 50px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .service-card {
-                padding: 2rem;
-            }
-
-            .header-top {
-                padding: 0.5rem 1rem;
-            }
-        }
-
-        /* ============================================= */
-        /* RESPONSIVE DESIGN OPTIMISÉ */
-        /* ============================================= */
-
-        /* Tablettes (768px - 968px) */
-        @media (max-width: 968px) {
-            .nav-links {
-                gap: 1.5rem;
-                font-size: 0.9rem;
-            }
-            
-            .hero {
-                background-attachment: scroll;
-                padding: 4rem 1.5rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-        }
-
-        /* Mobile et petites tablettes (max 768px) */
-        @media (max-width: 768px) {
-            .header-top {
-                padding: 0.5rem 1rem;
-            }
-            
-            .social-links {
-                gap: 0.5rem;
-            }
-            
-            .social-links a {
-                font-size: 1rem;
-            }
-            
-            nav {
-                padding: 1rem;
-                position: relative;
-            }
-            
-            .logo {
-                margin-bottom: 1rem;
-            }
-            
-            .logo img {
-                height: 50px;
-            }
-            
-            .menu-toggle {
-                display: flex;
-                position: absolute;
-                right: 1rem;
-                top: 50%;
-                transform: translateY(-50%);
-                flex-direction: column;
-                cursor: pointer;
-                z-index: 100;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: 100vh;
-                background: #fff;
-                flex-direction: column;
-                padding: 5rem 2rem 2rem;
-                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-                transition: left 0.3s ease;
-                gap: 1rem;
-                align-items: flex-start;
-                overflow-y: auto;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links a {
-                width: 100%;
-                padding: 0.8rem 0;
-                border-bottom: 1px solid #f0f0f0;
-            }
-            
-            .hero {
-                margin-top: 120px;
-                padding: 3rem 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-                line-height: 1.3;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .cta-button {
-                padding: 0.8rem 2rem;
-                font-size: 0.95rem;
-            }
-            
-            .services,
-            .content {
-                padding: 3rem 1rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 2rem;
-            }
-            
-            .services-grid,
-            .team-grid,
-            .values-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .service-card,
-            .team-member {
-                padding: 1.5rem;
-            }
-            
-            .service-icon,
-            .value-icon {
-                font-size: 2.5rem;
-            }
-            
-            .about,
-            .values,
-            .contact {
-                padding: 3rem 1rem;
-            }
-            
-            .about-content p {
-                font-size: 1rem;
-            }
-            
-            .contact-info,
             .contact-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
                 gap: 2rem;
-                padding: 0 1rem;
             }
-            
-            .footer-logo img {
-                height: 50px;
+
+            .contact-content {
+                padding: 3rem 1rem;
             }
-            
-            /* Mobile menu overlay */
-            .nav-links.active::before {
-                content: "";
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0,0,0,0.5);
-                z-index: -1;
+
+            .map-section {
+                padding: 3rem 1rem;
+            }
+
+            .map-container iframe {
+                height: 400px;
             }
         }
 
-        /* Très petits écrans (max 480px) */
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.5rem;
-            }
-            
-            .hero p {
-                font-size: 0.95rem;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-            }
-            
-            .service-card h3,
-            .value-card h3 {
-                font-size: 1.2rem;
-            }
-            
-            .cta-button {
-                padding: 0.7rem 1.5rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Page Contact - Responsive spécifique */
-        @media (max-width: 768px) {
-            .map-frame,
-            iframe[class*="map"] {
-                height: 300px !important;
-            }
-            
-            form input,
-            form textarea,
-            form button {
-                font-size: 16px !important; /* Éviter le zoom sur iOS */
-            }
-        }
-
-        /* Menu déroulant Services */
-        .nav-item {
-            position: relative;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            min-width: 280px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-            border-radius: 10px;
-            padding: 1rem 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            margin-top: 0.5rem;
-        }
-
-        .nav-item:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 0.8rem 1.5rem;
-            color: #2c3e50;
-            text-decoration: none;
-            font-size: 0.9rem;
-            text-transform: none;
-            letter-spacing: normal;
-            transition: all 0.3s;
-            border-left: 3px solid transparent;
-        }
-
-        .dropdown-menu a:hover {
-            background: #f8f9fa;
-            color: #1B4D89;
-            border-left-color: #F4C430;
-            padding-left: 1.8rem;
-        }
-
-        .dropdown-menu a i {
-            margin-right: 0.8rem;
-            color: #1B4D89;
-            width: 20px;
-            text-align: center;
-        }
-
-        .nav-item > a.has-dropdown::after {
-            content: "";
-            display: inline-block;
-            margin-left: 0.5rem;
-            width: 0;
-            height: 0;
-            border-left: 4px solid transparent;
-            border-right: 4px solid transparent;
-            border-top: 4px solid currentColor;
-            vertical-align: middle;
-        }
-
-        @media (max-width: 768px) {
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                background: #f8f9fa;
-                margin-top: 0.5rem;
-                margin-bottom: 0.5rem;
-                border-radius: 5px;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-                padding: 0;
+            .contact-form-section {
+                padding: 1.5rem;
             }
 
-            .nav-item.mobile-open .dropdown-menu {
-                max-height: 500px;
-                padding: 0.5rem 0;
+            .info-card {
+                padding: 1rem;
             }
 
-            .nav-item > a.has-dropdown {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+            .map-container iframe {
+                height: 300px;
             }
 
-            .dropdown-menu a {
-                padding: 0.6rem 1rem 0.6rem 2rem;
-                font-size: 0.85rem;
+            .submit-button {
+                width: 100%;
             }
         }
     </style>
@@ -793,34 +202,23 @@
     <header>
         <div class="header-top">
             <div class="social-links">
-                <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/srsnotaires" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/company/srsnotaires" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/srsnotaires" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
         <nav>
             <div class="logo">
                 <a href="index.html">
-                    <img src="logo-srs-notaires.png" alt="SRS Notaires">
+                    <img src="logo-srs-notaires.png" alt="SRS Notaires Logo">
                 </a>
             </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">ACCUEIL</a></li>
-                <li><a href="equipe.html">NOTRE ÉQUIPE</a></li>
-                <li class="nav-item">
-                    <a href="services.html" class="has-dropdown" onclick="toggleDropdown(event)">NOS SERVICES</a>
-                    <div class="dropdown-menu">
-                        <a href="services.html#service-1"><i class="fas fa-home"></i> Transactions immobilières</a>
-                        <a href="services.html#service-2"><i class="fas fa-file-signature"></i> Testaments et successions</a>
-                        <a href="services.html#service-3"><i class="fas fa-heart"></i> Droit familial</a>
-                        <a href="services.html#service-4"><i class="fas fa-building"></i> Droit corporatif</a>
-                        <a href="services.html#service-5"><i class="fas fa-shield-alt"></i> Protection du patrimoine</a>
-                        <a href="services.html#service-6"><i class="fas fa-balance-scale"></i> Conseils juridiques</a>
-                        <a href="services.html#service-7"><i class="fas fa-plane-departure"></i> Immigration</a>
-                    </div>
-                </li>
-                <li><a href="carrieres.html">CARRIÈRES</a></li>
-                <li><a href="contact.html" class="active">NOUS JOINDRE</a></li>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="equipe.html">Notre Équipe</a></li>
+                <li><a href="services.html">Nos Services</a></li>
+                <li><a href="carrieres.html">Carrières</a></li>
+                <li><a href="contact.html">Nous Joindre</a></li>
             </ul>
             <div class="menu-toggle" id="menuToggle">
                 <span></span>
@@ -830,81 +228,101 @@
         </nav>
     </header>
 
-    <section class="hero">
+    <section class="hero" style="background: linear-gradient(rgba(27, 77, 137, 0.85), rgba(13, 59, 102, 0.85)), url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&q=80') center/cover; background-attachment: fixed;">
         <h1>Nous Joindre</h1>
         <p>Contactez-nous pour une consultation personnalisée</p>
     </section>
 
-    <section class="content" style="max-width: 1200px; margin: 0 auto; padding: 5rem 2rem;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
-            <div>
-                <h2 style="color: #1B4D89; margin-bottom: 2rem;">Nos coordonnées</h2>
-                <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #F4C430;">
-                    <h3 style="color: #1B4D89; margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt" style="color: #F4C430; margin-right: 0.5rem;"></i> Adresse</h3>
-                    <p style="color: #666;">1878 boulevard des Laurentides<br>Laval, QC H7M 2P9<br>Canada</p>
+    <section class="contact-content">
+        <div class="contact-grid">
+            <div class="contact-info-section">
+                <h2>Nos coordonnées</h2>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Adresse</h3>
+                    <p>1878 boulevard des Laurentides<br>Laval, QC H7M 2P9<br>Canada</p>
                 </div>
-                <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #F4C430;">
-                    <h3 style="color: #1B4D89; margin-bottom: 0.5rem;"><i class="fas fa-phone" style="color: #F4C430; margin-right: 0.5rem;"></i> Téléphone</h3>
-                    <p style="color: #666;">(450) 662-2112</p>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-phone"></i> Téléphone</h3>
+                    <p><a href="tel:+14506622112">(450) 662-2112</a></p>
                 </div>
-                <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #F4C430;">
-                    <h3 style="color: #1B4D89; margin-bottom: 0.5rem;"><i class="fas fa-fax" style="color: #F4C430; margin-right: 0.5rem;"></i> Télécopieur</h3>
-                    <p style="color: #666;">(514) 565-9802</p>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-fax"></i> Télécopieur</h3>
+                    <p>(514) 565-9802</p>
                 </div>
-                <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #F4C430;">
-                    <h3 style="color: #1B4D89; margin-bottom: 0.5rem;"><i class="fas fa-envelope" style="color: #F4C430; margin-right: 0.5rem;"></i> Courriel</h3>
-                    <p style="color: #666;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c5acaba3aa85b6b7b6e8abaab1a4acb7a0eba6aaa8">[email&#160;protected]</a></p>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-envelope"></i> Courriel</h3>
+                    <p><a href="/cdn-cgi/l/email-protection#d1b8bfb7be91a2a3a2bfbea5b0b8a3b4a2ffb2bebc"><span class="__cf_email__" data-cfemail="761f18101936050405181902171f0413055815191b">[email&#160;protected]</span></a></p>
                 </div>
-                <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #F4C430;">
-                    <h3 style="color: #1B4D89; margin-bottom: 0.5rem;"><i class="fas fa-clock" style="color: #F4C430; margin-right: 0.5rem;"></i> Heures d'ouverture</h3>
-                    <p style="color: #666;">Lundi - Vendredi: 9h00 - 17h00<br>Samedi - Dimanche: Fermé<br>Sur rendez-vous</p>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-clock"></i> Heures d'ouverture</h3>
+                    <p>Lundi - Vendredi: 9h00 - 17h00<br>Samedi - Dimanche: Fermé<br>Sur rendez-vous</p>
                 </div>
             </div>
 
-            <div style="background: #fff; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                <h2 style="color: #1B4D89; margin-bottom: 1.5rem;">Formulaire de contact</h2>
-                <form>
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #0D3B66;">Nom complet *</label>
-                        <input type="text" required style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 5px; font-family: inherit;">
+            <div class="contact-form-section">
+                <h2>Formulaire de contact</h2>
+                <form id="contactForm" action="#" method="post" onsubmit="return validateContactForm(event)">
+                    <div class="form-group">
+                        <label for="name">Nom complet *</label>
+                        <input type="text" id="name" name="name" required minlength="2" maxlength="100">
+                        <span class="error-message" id="nameError"></span>
                     </div>
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #0D3B66;">Courriel *</label>
-                        <input type="email" required style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 5px; font-family: inherit;">
+
+                    <div class="form-group">
+                        <label for="email">Courriel *</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="emailError"></span>
                     </div>
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #0D3B66;">Téléphone</label>
-                        <input type="tel" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 5px; font-family: inherit;">
+
+                    <div class="form-group">
+                        <label for="phone">Téléphone *</label>
+                        <input type="tel" id="phone" name="phone" required pattern="[0-9\s\-\+\(\)]{10,}" placeholder="(450) 662-2112">
+                        <span class="error-message" id="phoneError"></span>
+                        <small style="color: #666; font-size: 0.85rem;">Format accepté : (450) 662-2112 ou 450-662-2112</small>
                     </div>
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #0D3B66;">Sujet</label>
-                        <input type="text" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 5px; font-family: inherit;">
+
+                    <div class="form-group">
+                        <label for="subject">Sujet *</label>
+                        <input type="text" id="subject" name="subject" required minlength="3" maxlength="200">
+                        <span class="error-message" id="subjectError"></span>
                     </div>
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #0D3B66;">Message *</label>
-                        <textarea required style="width: 100%; min-height: 150px; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 5px; font-family: inherit;"></textarea>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required minlength="10" maxlength="1000"></textarea>
+                        <span class="error-message" id="messageError"></span>
+                        <small style="color: #666; font-size: 0.85rem;">Minimum 10 caractères</small>
                     </div>
-                    <button type="submit" style="background: #F4C430; color: #0D3B66; padding: 1rem 2.5rem; border: none; border-radius: 50px; font-weight: 700; cursor: pointer; font-size: 1rem;">Envoyer</button>
+
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-paper-plane"></i> Envoyer
+                    </button>
                 </form>
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <i class="fas fa-check-circle"></i> Votre message a été envoyé avec succès ! Nous vous contacterons sous peu.
+                </div>
             </div>
         </div>
     </section>
 
-    <section style="padding: 4rem 2rem; background: #f8f9fa;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 2rem; color: #1B4D89; margin-bottom: 1rem;"><i class="fas fa-map-marked-alt" style="color: #F4C430; margin-right: 0.5rem;"></i> Notre Emplacement</h2>
-            <p style="text-align: center; margin-bottom: 2rem; color: #666;">
-                Situés au cœur de Laval, nous sommes facilement accessibles pour vous servir
-            </p>
+    <section class="map-section">
+        <div class="map-container">
+            <h2><i class="fas fa-map-marked-alt" style="color: #F4C430; margin-right: 0.5rem;"></i> Notre Emplacement</h2>
+            <p>Situés au cœur de Laval, nous sommes facilement accessibles pour vous servir</p>
             <iframe 
-                style="width: 100%; height: 500px; border: none; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.15);"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2788.234567!2d-73.7436!3d45.5629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91fb5c5c5c5c5%3A0x5c5c5c5c5c5c5c5c!2s1878%20Boulevard%20des%20Laurentides%2C%20Laval%2C%20QC%20H7M%202P9!5e0!3m2!1sfr!2sca!4v1637000000000!5m2!1sfr!2sca" 
-                allowfullscreen="" 
-                loading="lazy" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2788.8!2d-73.7433!3d45.5691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc9209!0x0!5e0!3m2!1sen!2sca!4v1234567890"
+                allowfullscreen=""
+                loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
         </div>
     </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-column">
@@ -914,6 +332,14 @@
                 <p class="footer-description">
                     Cabinet de notaires professionnel offrant des services juridiques de qualité à Laval. Nous vous accompagnons dans tous vos projets de vie avec expertise et dévouement.
                 </p>
+                <div class="footer-social">
+                    <h3>Suivez-nous</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/srsnotaires" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/company/srsnotaires" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/srsnotaires" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
             </div>
 
             <div class="footer-column">
@@ -946,7 +372,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Laval, QC H7M 2P9</p>
                 <p><i class="fas fa-phone"></i> (450) 662-2112</p>
                 <p><i class="fas fa-fax"></i> (514) 565-9802</p>
-                <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3daddd5dcf3c0c1c09edddcc7d2dac1d69dd0dcde">[email&#160;protected]</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#f1989f979eb18283829f9e859098839482df929e9c"><span class="__cf_email__" data-cfemail="1c75727a735c6f6e6f7273687d756e796f327f7371">[email&#160;protected]</span></a></p>
                 <p><i class="fas fa-clock"></i> Lun-Ven: 9h00 - 17h00</p>
             </div>
         </div>
@@ -956,4 +382,69 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><scrip
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function validateContactForm(event) {
+            event.preventDefault();
+            
+            // Réinitialiser les messages d'erreur
+            document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+            
+            let isValid = true;
+            
+            // Validation du nom
+            const name = document.getElementById('name').value.trim();
+            if (name.length < 2) {
+                document.getElementById('nameError').textContent = 'Le nom doit contenir au moins 2 caractères';
+                isValid = false;
+            }
+            
+            // Validation de l'email
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').textContent = 'Veuillez entrer une adresse courriel valide';
+                isValid = false;
+            }
+            
+            // Validation du téléphone
+            const phone = document.getElementById('phone').value.trim();
+            const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/;
+            if (!phoneRegex.test(phone)) {
+                document.getElementById('phoneError').textContent = 'Veuillez entrer un numéro de téléphone valide (minimum 10 chiffres)';
+                isValid = false;
+            }
+            
+            // Validation du sujet
+            const subject = document.getElementById('subject').value.trim();
+            if (subject.length < 3) {
+                document.getElementById('subjectError').textContent = 'Le sujet doit contenir au moins 3 caractères';
+                isValid = false;
+            }
+            
+            // Validation du message
+            const message = document.getElementById('message').value.trim();
+            if (message.length < 10) {
+                document.getElementById('messageError').textContent = 'Le message doit contenir au moins 10 caractères';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Afficher le message de succès
+                document.getElementById('contactForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Réinitialiser le formulaire après 3 secondes
+                setTimeout(() => {
+                    document.getElementById('contactForm').reset();
+                    document.getElementById('contactForm').style.display = 'block';
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 3000);
+            }
+            
+            return false;
+        }
+    </script>
+</body>
+</html>
