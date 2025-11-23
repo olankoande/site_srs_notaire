@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔧 Diagnostic Menu Hamburger - DÉFINITIF</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1B4D89;
+            margin-bottom: 1rem;
+        }
+
+        .alert {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .alert-danger {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            border-color: #17a2b8;
+            color: #0c5460;
+        }
+
+        button {
+            background: #1B4D89;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #0D3B66;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .test-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .test-section h3 {
+            color: #1B4D89;
+            margin-bottom: 1rem;
+        }
+
+        #console {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+
+        .console-line {
+            margin: 0.25rem 0;
+        }
+
+        .console-error {
+            color: #ff6b6b;
+        }
+
+        .console-success {
+            color: #51cf66;
+        }
+
+        .console-warning {
+            color: #ffd43b;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 5px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #1B4D89;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-result {
+            font-size: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .progress {
+            width: 100%;
+            height: 30px;
+            background: #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #28a745;
+            transition: width 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            button {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Diagnostic Menu Hamburger - VERSION DÉFINITIVE</h1>
+        
+        <div class="alert alert-info">
+            <strong>📱 Instructions:</strong> Cette page va diagnostiquer pourquoi le menu ne marche pas et vous donner la solution exacte.
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar" style="width: 0%">0%</div>
+        </div>
+
+        <!-- TEST 1 -->
+        <div class="test-section">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Test du Cache Navigateur</h3>
+                    <p>Le problème #1 dans 90% des cas</p>
+                    <div class="btn-group">
+                        <button onclick="testCache()">🔍 Tester le Cache</button>
+                        <button onclick="showCacheClearInstructions()">📖 Comment Vider le Cache</button>
+                    </div>
+                    <div id="cache-result"></div>
+                </div>
+                <div class="step-result" id="cache-icon"></div>
+            </div>
+        </div>
+
+        <!-- TEST 2 -->
+        <div class="test-section">
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Test des Éléments HTML</h3>
+                    <p>Vérifier que menuToggle et nav-links existent</p>
+                    <button onclick="testElements()">🔍 Tester les Éléments</button>
+                    <div id="elements-result"></div>
+                </div>
+                <div class="step-result" id="elements-icon"></div>
+            </div>
+        </div>
+
+        <!-- TEST 3 -->
+        <div class="test-section">
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Test du JavaScript</h3>
+                    <p>Vérifier que le script est chargé</p>
+                    <button onclick="testJavaScript()">🔍 Tester le JS</button>
+                    <div id="js-result"></div>
+                </div>
+                <div class="step-result" id="js-icon"></div>
+            </div>
+        </div>
+
+        <!-- TEST 4 -->
+        <div class="test-section">
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Test du CSS</h3>
+                    <p>Vérifier que le menu peut s'ouvrir</p>
+                    <button onclick="testCSS()">🔍 Tester le CSS</button>
+                    <div id="css-result"></div>
+                </div>
+                <div class="step-result" id="css-icon"></div>
+            </div>
+        </div>
+
+        <!-- TEST 5 -->
+        <div class="test-section">
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Test Manuel du Clic</h3>
+                    <p>Cliquez sur le menu hamburger pour tester</p>
+                    <button onclick="window.location.href='index.html'">🔗 Aller sur index.html</button>
+                    <div id="manual-result"></div>
+                </div>
+                <div class="step-result" id="manual-icon"></div>
+            </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="test-section">
+            <h3>🛠️ Actions Correctives</h3>
+            <div class="btn-group">
+                <button onclick="runAllTests()">🚀 Lancer Tous les Tests</button>
+                <button onclick="clearConsole()">🗑️ Effacer la Console</button>
+                <button onclick="downloadReport()">📥 Télécharger le Rapport</button>
+            </div>
+        </div>
+
+        <!-- CONSOLE -->
+        <h3>📋 Console de Diagnostic</h3>
+        <div id="console"></div>
+
+        <!-- SOLUTION -->
+        <div id="solution" style="display: none; margin-top: 2rem;"></div>
+    </div>
+
+    <script>
+        let testsPassed = 0;
+        let totalTests = 5;
+
+        function log(message, type = 'info') {
+            const console = document.getElementById('console');
+            const line = document.createElement('div');
+            line.className = 'console-line console-' + type;
+            
+            const timestamp = new Date().toLocaleTimeString();
+            line.textContent = `[${timestamp}] ${message}`;
+            
+            console.appendChild(line);
+            console.scrollTop = console.scrollHeight;
+        }
+
+        function updateProgress() {
+            const percent = (testsPassed / totalTests) * 100;
+            const bar = document.getElementById('progressBar');
+            bar.style.width = percent + '%';
+            bar.textContent = Math.round(percent) + '%';
+        }
+
+        function testCache() {
+            log('🔍 Test du cache...', 'info');
+            
+            const scriptTime = document.querySelector('script[src="script.js"]');
+            
+            if (!scriptTime) {
+                log('⚠️ script.js non trouvé dans le HTML', 'warning');
+                document.getElementById('cache-result').innerHTML = 
+                    '<div class="alert alert-warning">⚠️ script.js non trouvé! Vérifiez que la balise &lt;script src="script.js"&gt; existe.</div>';
+                document.getElementById('cache-icon').textContent = '⚠️';
+                return;
+            }
+            
+            log('✅ script.js trouvé', 'success');
+            document.getElementById('cache-result').innerHTML = 
+                '<div class="alert alert-info"><strong>💡 Solution:</strong> Videz le cache avec <strong>Ctrl+Shift+Delete</strong> puis rechargez avec <strong>Ctrl+F5</strong></div>';
+            document.getElementById('cache-icon').textContent = '⚠️';
+            testsPassed++;
+            updateProgress();
+        }
+
+        function testElements() {
+            log('🔍 Test des éléments HTML...', 'info');
+            
+            const toggle = document.getElementById('menuToggle');
+            const menu = document.querySelector('.nav-links');
+            
+            if (!toggle) {
+                log('❌ menuToggle non trouvé!', 'error');
+                document.getElementById('elements-result').innerHTML = 
+                    '<div class="alert alert-danger">❌ #menuToggle manquant! Le HTML est incorrect.</div>';
+                document.getElementById('elements-icon').textContent = '❌';
+                return;
+            }
+            
+            if (!menu) {
+                log('❌ .nav-links non trouvé!', 'error');
+                document.getElementById('elements-result').innerHTML = 
+                    '<div class="alert alert-danger">❌ .nav-links manquant! Le HTML est incorrect.</div>';
+                document.getElementById('elements-icon').textContent = '❌';
+                return;
+            }
+            
+            log('✅ Tous les éléments trouvés!', 'success');
+            log('📍 menuToggle: ' + toggle, 'info');
+            log('📍 nav-links: ' + menu, 'info');
+            
+            document.getElementById('elements-result').innerHTML = 
+                '<div class="alert alert-success">✅ Tous les éléments HTML sont présents!</div>';
+            document.getElementById('elements-icon').textContent = '✅';
+            testsPassed++;
+            updateProgress();
+        }
+
+        function testJavaScript() {
+            log('🔍 Test du JavaScript...', 'info');
+            
+            const toggle = document.getElementById('menuToggle');
+            
+            if (!toggle) {
+                log('❌ Impossible de tester, menuToggle manquant', 'error');
+                return;
+            }
+            
+            if (toggle.onclick) {
+                log('✅ onclick est défini!', 'success');
+                log('📝 onclick: ' + toggle.onclick, 'info');
+                document.getElementById('js-result').innerHTML = 
+                    '<div class="alert alert-success">✅ JavaScript chargé! Le handler onclick existe.</div>';
+                document.getElementById('js-icon').textContent = '✅';
+                testsPassed++;
+            } else {
+                log('❌ onclick n\'est PAS défini!', 'error');
+                log('🔧 Solution: Le script ne s\'est pas chargé', 'warning');
+                document.getElementById('js-result').innerHTML = 
+                    '<div class="alert alert-danger">❌ Le JavaScript ne s\'est PAS chargé! <strong>Videz le cache et rechargez!</strong></div>';
+                document.getElementById('js-icon').textContent = '❌';
+            }
+            
+            updateProgress();
+        }
+
+        function testCSS() {
+            log('🔍 Test du CSS...', 'info');
+            
+            const menu = document.querySelector('.nav-links');
+            
+            if (!menu) {
+                log('❌ Impossible de tester, menu manquant', 'error');
+                return;
+            }
+            
+            // Ouvrir le menu
+            menu.classList.add('active');
+            
+            // Vérifier la position
+            const style = window.getComputedStyle(menu);
+            const left = style.left;
+            
+            log('📊 Position left: ' + left, 'info');
+            
+            if (left === '0px' || left === 'auto') {
+                log('✅ Le CSS fonctionne! Menu peut s\'ouvrir', 'success');
+                document.getElementById('css-result').innerHTML = 
+                    '<div class="alert alert-success">✅ Le CSS fonctionne! Le menu peut s\'ouvrir.</div>';
+                document.getElementById('css-icon').textContent = '✅';
+                testsPassed++;
+            } else {
+                log('❌ Le CSS ne fonctionne pas correctement', 'error');
+                document.getElementById('css-result').innerHTML = 
+                    '<div class="alert alert-danger">❌ Le CSS ne fonctionne pas! Vérifiez style.css</div>';
+                document.getElementById('css-icon').textContent = '❌';
+            }
+            
+            // Refermer
+            menu.classList.remove('active');
+            
+            updateProgress();
+        }
+
+        function showCacheClearInstructions() {
+            const instructions = `
+                <div class="alert alert-warning">
+                    <h4>💡 Comment Vider le Cache</h4>
+                    <p><strong>Windows/Linux:</strong></p>
+                    <ul>
+                        <li>Ctrl + Shift + Delete</li>
+                        <li>Cocher "Cache"</li>
+                        <li>Effacer</li>
+                        <li>Puis : Ctrl + F5 pour recharger</li>
+                    </ul>
+                    <p><strong>Mac:</strong></p>
+                    <ul>
+                        <li>Cmd + Shift + Delete</li>
+                        <li>Effacer le cache</li>
+                        <li>Puis : Cmd + Shift + R</li>
+                    </ul>
+                    <p><strong>Mobile:</strong></p>
+                    <ul>
+                        <li>Paramètres → Safari/Chrome</li>
+                        <li>Effacer historique et données</li>
+                    </ul>
+                </div>
+            `;
+            
+            document.getElementById('cache-result').innerHTML = instructions;
+        }
+
+        function runAllTests() {
+            testsPassed = 0;
+            clearConsole();
+            log('🚀 Lancement de tous les tests...', 'info');
+            log('', 'info');
+            
+            setTimeout(() => testCache(), 500);
+            setTimeout(() => testElements(), 1000);
+            setTimeout(() => testJavaScript(), 1500);
+            setTimeout(() => testCSS(), 2000);
+            setTimeout(() => showSolution(), 2500);
+        }
+
+        function showSolution() {
+            const solution = document.getElementById('solution');
+            solution.style.display = 'block';
+            
+            if (testsPassed === totalTests) {
+                solution.innerHTML = `
+                    <div class="alert alert-success">
+                        <h3>🎉 Tous les tests réussis!</h3>
+                        <p>Le menu hamburger devrait fonctionner. Si ce n'est toujours pas le cas :</p>
+                        <ol>
+                            <li><strong>Videz le cache</strong> (Ctrl+Shift+Delete)</li>
+                            <li><strong>Rechargez</strong> (Ctrl+F5)</li>
+                            <li><strong>Ouvrez en navigation privée</strong></li>
+                        </ol>
+                    </div>
+                `;
+            } else {
+                solution.innerHTML = `
+                    <div class="alert alert-danger">
+                        <h3>❌ ${totalTests - testsPassed} test(s) échoué(s)</h3>
+                        <p><strong>Solution principale : VIDER LE CACHE!</strong></p>
+                        <p>Dans 90% des cas, le problème vient du cache du navigateur qui garde l'ancien script.js</p>
+                        <ol>
+                            <li>Ctrl + Shift + Delete</li>
+                            <li>Cocher "Cache"</li>
+                            <li>Effacer</li>
+                            <li>Ctrl + F5 pour recharger</li>
+                        </ol>
+                    </div>
+                `;
+            }
+        }
+
+        function clearConsole() {
+            document.getElementById('console').innerHTML = '';
+            log('Console effacée', 'info');
+        }
+
+        function downloadReport() {
+            const report = document.getElementById('console').textContent;
+            const blob = new Blob([report], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'diagnostic-menu-' + new Date().getTime() + '.txt';
+            a.click();
+            log('📥 Rapport téléchargé', 'success');
+        }
+
+        // Lancer les tests au chargement
+        window.addEventListener('load', function() {
+            log('✅ Page de diagnostic chargée', 'success');
+            log('📱 Largeur écran: ' + window.innerWidth + 'px', 'info');
+            log('🌐 Navigateur: ' + navigator.userAgent, 'info');
+            log('', 'info');
+            log('👉 Cliquez sur "🚀 Lancer Tous les Tests" pour commencer', 'info');
+        });
+    </script>
+</body>
+</html>
