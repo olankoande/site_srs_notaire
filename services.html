@@ -4,9 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nos Services - SRS Notaires</title>
+    
+    <!-- ============================================
+         META TAGS SEO & PARTAGE SOCIAL
+         ============================================ -->
+    
+    <!-- Meta Tags Basiques -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO - Description et Mots-clés -->
+    <meta name="description" content="Découvrez nos services notariaux complets : transactions immobilières, testaments et successions, droit familial, droit commercial, mandats de protection, incorporation et prêts hypothécaires.">
+    <meta name="keywords" content="notaire Laval, notaire Québec, testament, succession, transaction immobilière, droit familial, contrat de mariage, achat maison, notaire près de moi, services notariaux, SRS Notaires">
+    <meta name="author" content="SRS Notaires">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SRS Notaires">
+    <meta property="og:title" content="Nos Services Notariaux - SRS Notaires Laval">
+    <meta property="og:description" content="Découvrez nos services notariaux complets : transactions immobilières, testaments et successions, droit familial, droit commercial, mandats de protection, incorporation et prêts hypothécaires.">
+    <meta property="og:url" content="https://www.srs-notaires.com/services.html">
+    <meta property="og:image" content="https://www.srs-notaires.com/logo-srs-notaires.png">
+    <meta property="og:image:width" content="556">
+    <meta property="og:image:height" content="120">
+    <meta property="og:locale" content="fr_CA">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nos Services Notariaux - SRS Notaires Laval">
+    <meta name="twitter:description" content="Découvrez nos services notariaux complets à Laval.">
+    <meta name="twitter:image" content="https://www.srs-notaires.com/logo-srs-notaires.png">
+    
+    <link rel="canonical" href="https://www.srs-notaires.com/services.html">
+    <link rel="icon" type="image/png" href="logo-srs-notaires.png">
+
     <meta name="description" content="Découvrez tous les services notariaux offerts par SRS Notaires : transactions immobilières, testaments, droit familial, corporatif et plus.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- SCHEMA.ORG MARKUP (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "name": "SRS Notaires",
+      "image": "https://www.srs-notaires.com/logo-srs-notaires.png",
+      "logo": "https://www.srs-notaires.com/logo-srs-notaires.png",
+      "@id": "https://www.srs-notaires.com",
+      "url": "https://www.srs-notaires.com",
+      "telephone": "+14506622112",
+      "email": "infos@srs-notaires.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1878 boulevard des Laurentides",
+        "addressLocality": "Laval",
+        "addressRegion": "QC",
+        "postalCode": "H7M 2P9",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.6066,
+        "longitude": -73.7124
+      },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      }],
+      "sameAs": [
+        "https://www.facebook.com/srsnotaires",
+        "https://www.linkedin.com/company/srsnotaires",
+        "https://www.instagram.com/srsnotaires"
+      ],
+      "priceRange": "$$",
+      "description": "Services notariaux professionnels à Laval : transactions immobilières, testaments, successions, droit familial et commercial.",
+      "slogan": "Votre partenaire juridique de confiance"
+    }
+    </script>
+
 </head>
 <body>
     <!-- Top contact bar -->
@@ -18,7 +96,7 @@
             </div>
             <div class="top-contact-item">
                 <i class="fas fa-envelope"></i>
-                <a href="/cdn-cgi/l/email-protection#c6afa8a0a986b5b4b5eba8a9b2a7afb4a3e8a5a9ab"><span class="__cf_email__" data-cfemail="6c05020a032c1f1e1f410203180d051e09420f0301">[email&#160;protected]</span></a>
+                <a href="/cdn-cgi/l/email-protection#fc95929a93bc8f8e8fd19293889d958e99d29f9391"><span class="__cf_email__" data-cfemail="e0898e868fa0939293cd8e8f9481899285ce838f8d">[email&#160;protected]</span></a>
             </div>
         </div>
     </div>
@@ -41,7 +119,7 @@
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="equipe.html">Notre Équipe</a></li>
                 <li class="has-submenu">
-                    <a href="services.html">Nos Services</a>
+                    <a href="services.html">Nos Services <i class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
                         <li><a href="services.html#service-immobilier">Transactions immobilières</a></li>
                         <li><a href="services.html#service-testaments">Testaments et successions</a></li>
@@ -55,7 +133,7 @@
                 <li><a href="carrieres.html">Carrières</a></li>
                 <li><a href="contact.html">Nous Joindre</a></li>
             </ul>
-            <div class="menu-toggle" id="menuToggle" onclick="toggleMobileMenu()">
+            <div class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -63,7 +141,7 @@
         </nav>
     </header>
 
-    <section class="hero" style="background: linear-gradient(rgba(27, 77, 137, 0.85), rgba(13, 59, 102, 0.85)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1600&q=80') center/cover; background-attachment: fixed;">
+    <section class="hero" style="background: linear-gradient(rgba(44, 95, 141, 0.85), rgba(44, 95, 141, 0.85)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80') center/cover; background-attachment: fixed;">
         <h1>Nos Services Notariaux</h1>
         <p>Des services juridiques complets pour tous vos besoins, offerts avec professionnalisme et rigueur par notre équipe d'experts.</p>
     </section>
@@ -260,7 +338,7 @@
                 <ul class="footer-links">
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="equipe.html">Notre Équipe</a></li>
-                    <li><a href="services.html">Nos Services</a></li>
+                    <li><a href="services.html">Nos Services <i class="fas fa-chevron-down"></i></a></li>
                     <li><a href="carrieres.html">Carrières</a></li>
                     <li><a href="contact.html">Nous Joindre</a></li>
                 </ul>
@@ -270,4 +348,12 @@
                 <h3>Coordonnées</h3>
                 <p><i class="fas fa-map-marker-alt"></i> 1878 boulevard des Laurentides<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Laval, QC H7M 2P9</p>
-                <p><i class="fas fa-phone"></i> (450) 6
+                <p><i class="fas fa-phone"></i> (450) 662-2112</p>
+                <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#7c15121a133c0f0e0f511213081d150e19521f1311"><span class="__cf_email__" data-cfemail="0c65626a634c7f7e7f216263786d657e69226f6361">[email&#160;protected]</span></a></p>
+            </div>
+        </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&

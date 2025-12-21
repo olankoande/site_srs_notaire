@@ -9,12 +9,12 @@ html {
 }
 
 :root {
-    --primary-color: #1B4D89;
-    --secondary-color: #F4C430;
-    --accent-color: #0D3B66;
+    --primary-color: #2c5f8d;
+    --secondary-color: #e67e22;
+    --accent-color: #ff8c42;
     --text-dark: #2c3e50;
     --text-light: #ffffff;
-    --bg-light: #f8f9fa;
+    --bg-light: #f5f5f5;
     --bg-white: #ffffff;
 }
 
@@ -179,18 +179,23 @@ nav {
     display: inline-block;
     padding: 1rem 2.5rem;
     background: var(--secondary-color);
-    color: var(--accent-color);
+    color: #ffffff;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 700;
+    font-size: 1.1rem;
     transition: all 0.3s;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    letter-spacing: 0.3px;
 }
 
 .cta-button:hover {
-    background: #FFD700;
+    background: #ff8c42;
+    color: #ffffff;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 
 /* Services Section */
@@ -285,7 +290,7 @@ nav {
 
 .service-card:target {
     border-left-color: var(--primary-color);
-    box-shadow: 0 15px 50px rgba(27, 77, 137, 0.3);
+    box-shadow: 0 15px 50px rgba(44, 95, 141, 0.3);
     animation: highlight 1s ease-in-out;
 }
 
@@ -999,8 +1004,8 @@ footer {
 .file-upload-label {
     display: inline-block;
     padding: 0.8rem 1.5rem;
-    background: #F4C430;
-    color: #0D3B66;
+    background: #FFFFFF; border: 2px solid #2c5f8d;
+    color: #2c5f8d;
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s;
@@ -1051,12 +1056,12 @@ input[type="file"] {
     align-items: center;
     gap: 0.5rem;
     padding: 0.8rem 2rem;
-    background: #F4C430;
-    color: #0D3B66;
+    background: #FFFFFF; border: 2px solid #2c5f8d;
+    color: #2c5f8d;
     text-decoration: none;
     border: none;
     border-radius: 50px;
-    font-weight: 600;
+    font-weight: 700; font-size: 1.1rem; color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.3);
     transition: all 0.3s;
     margin-top: 1rem;
     cursor: pointer;
@@ -1105,7 +1110,7 @@ input[type="file"] {
 }
 
 .form-section h4 {
-    color: #1B4D89;
+    color: #2c5f8d;
     margin-bottom: 1.5rem;
     font-size: 1.2rem;
     display: flex;
@@ -1114,7 +1119,7 @@ input[type="file"] {
 }
 
 .form-section h4 i {
-    color: #F4C430;
+    color: #e67e22;
     font-size: 1.3rem;
 }
 
@@ -1131,7 +1136,7 @@ input[type="file"] {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #0D3B66;
+    color: #2c5f8d;
     font-weight: 600;
     font-size: 0.95rem;
 }
@@ -1154,7 +1159,7 @@ input[type="file"] {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #1B4D89;
+    border-color: #2c5f8d;
 }
 
 .form-group select {
@@ -1205,7 +1210,7 @@ input[type="file"] {
 
 /* Top contact bar */
 .top-contact-bar {
-    background: #0D3B66;
+    background: #2c5f8d;
     color: white;
     padding: 0.8rem 0;
     font-size: 0.9rem;
@@ -1229,7 +1234,7 @@ input[type="file"] {
 }
 
 .top-contact-item i {
-    color: #F4C430;
+    color: #e67e22;
     font-size: 1rem;
 }
 
@@ -1240,7 +1245,7 @@ input[type="file"] {
 }
 
 .top-contact-item a:hover {
-    color: #F4C430;
+    color: #e67e22;
 }
 
 /* Services with photos (Lexia style) */
@@ -1285,19 +1290,19 @@ input[type="file"] {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(13, 59, 102, 0.95) 0%, rgba(13, 59, 102, 0.85) 60%, transparent 100%);
+    background: linear-gradient(to top, rgba(44, 95, 141, 0.95) 0%, rgba(44, 95, 141, 0.85) 60%, transparent 100%);
     padding: 2rem 1.5rem 1.5rem;
     color: white;
     transition: all 0.3s ease;
 }
 
 .service-photo-card:hover .service-photo-overlay {
-    background: linear-gradient(to top, rgba(27, 77, 137, 0.95) 0%, rgba(27, 77, 137, 0.85) 60%, transparent 100%);
+    background: linear-gradient(to top, rgba(44, 95, 141, 0.95) 0%, rgba(44, 95, 141, 0.85) 60%, transparent 100%);
 }
 
 .service-photo-icon {
     font-size: 2.5rem;
-    color: #F4C430;
+    color: #e67e22;
     margin-bottom: 1rem;
 }
 
@@ -1497,23 +1502,32 @@ input[type="file"] {
 /* Bouton primaire - Jaune (principal) */
 .cta-primary {
     background: var(--secondary-color);
-    color: var(--accent-color);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
 .cta-primary:hover {
-    background: #FFD700;
+    background: #ff8c42;
+    color: #ffffff;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 
 /* Bouton secondaire - Blanc */
 .cta-secondary {
     background: white;
     color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: 2px solid var(--primary-color);
 }
 
 .cta-secondary:hover {
-    background: #f8f9fa;
+    background: var(--primary-color);
+    color: #ffffff;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
@@ -1523,6 +1537,9 @@ input[type="file"] {
     background: transparent;
     color: white;
     border: 2px solid white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .cta-tertiary:hover {
@@ -1660,5 +1677,43 @@ input[type="file"] {
     /* S'assurer que nav ne bloque pas */
     nav {
         position: relative;
+    }
+}
+
+/* ====================================
+   FLÈCHE SOUS-MENU
+   ==================================== */
+
+/* Flèche à côté de "Nos Services" */
+.has-submenu > a i.fa-chevron-down {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+/* Rotation de la flèche quand le menu est ouvert */
+.has-submenu.active > a i.fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Sur desktop, la flèche reste normale */
+@media (min-width: 769px) {
+    .has-submenu > a i.fa-chevron-down {
+        font-size: 0.7rem;
+    }
+}
+
+/* Sur mobile, flèche plus visible */
+@media (max-width: 768px) {
+    .has-submenu > a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .has-submenu > a i.fa-chevron-down {
+        margin-left: auto;
+        font-size: 0.9rem;
     }
 }

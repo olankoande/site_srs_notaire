@@ -1,0 +1,18 @@
+✅ VÉRIFICATION DES EMAILS
+
+Ancien email: info@srs-notaire.com
+Nouveau email: infos@srs-notaires.com
+
+FICHIERS MODIFIÉS:
+
+Pages HTML:
+carrieres.html
+contact.html
+equipe.html
+index.html
+services.html
+
+Fichiers PHP:
+traiter-formulaire.php
+
+TOTAL: 9 occurrences
