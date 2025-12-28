@@ -1,0 +1,27 @@
+# Robots.txt pour SRS Notaires
+# Autoriser tous les robots d'indexation
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.srs-notaires.com/sitemap.xml
+
+# Crawl-delay (optionnel)
+Crawl-delay: 1
+
+# Bloquer les fichiers sensibles (si nécessaire)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.pdf$
+
+# Autoriser spécifiquement Google
+User-agent: Googlebot
+Allow: /
+
+# Autoriser les autres moteurs
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
