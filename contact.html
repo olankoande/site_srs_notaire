@@ -92,7 +92,7 @@
             </div>
             <div class="top-contact-item">
                 <i class="fas fa-envelope"></i>
-                <a href="/cdn-cgi/l/email-protection#137a7d757c536061603e7d7c67727a61763d707c7e"><span class="__cf_email__" data-cfemail="b8d1d6ded7f8cbcacb95d6d7ccd9d1cadd96dbd7d5">contact@srsnotaires.com</span></a>
+                <a href="/cdn-cgi/l/email-protection#137a7d757c536061603e7d7c67727a61763d707c7e"><span class="__cf_email__" data-cfemail="b8d1d6ded7f8cbcacb95d6d7ccd9d1cadd96dbd7d5">infos@srs-notaires.com</span></a>
             </div>
         </div>
     </div>
@@ -164,7 +164,7 @@
 
                 <div class="info-card">
                     <h3><i class="fas fa-envelope"></i> Courriel</h3>
-                    <p><a href="/cdn-cgi/l/email-protection#bdd4d3dbd2fdcecfce90d3d2c9dcd4cfd893ded2d0"><span class="__cf_email__" data-cfemail="8fe6e1e9e0cffcfdfca2e1e0fbeee6fdeaa1ece0e2">contact@srsnotaires.com</span></a></p>
+                    <p><a href="/cdn-cgi/l/email-protection#bdd4d3dbd2fdcecfce90d3d2c9dcd4cfd893ded2d0"><span class="__cf_email__" data-cfemail="8fe6e1e9e0cffcfdfca2e1e0fbeee6fdeaa1ece0e2">infos@srs-notaires.com</span></a></p>
                 </div>
 
                 <div class="info-card">
@@ -175,7 +175,7 @@
 
             <div class="contact-form-section">
                 <h2>Formulaire de contact</h2>
-                <form class="contact-form" id="contact-form">
+                <form class="contact-form" action="traiter-formulaire.php" method="POST">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="prenom">Prénom *</label>
@@ -336,37 +336,6 @@
             </div>
         </div>
     </div>
-
-
-<!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  emailjs.init("SPyGWg_pu63bSIBUA"); // <-- Remplacer par ta clé publique EmailJS
-</script>
-
-<script>
-document.getElementById("contact-form").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const serviceID = "service_contact_srs"; // ou Gmail
-  const templateAdmin = "template_contact";
-  const templateClient = "template_acc_reception";
-
-  // Email vers le notaire
-  emailjs.sendForm(serviceID, templateAdmin, this)
-    .then(() => {
-      // Accusé de réception client
-      return emailjs.sendForm(serviceID, templateClient, document.getElementById("contact-form"));
-    })
-    .then(() => {
-      alert("Message envoyé. Accusé de réception envoyé au client.");
-      document.getElementById("contact-form").reset();
-    })
-    .catch(error => {
-      alert("Erreur : " + error.text);
-    });
-});
-</script>
 
 </body>
 </html>
